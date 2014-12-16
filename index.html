@@ -14,7 +14,12 @@
 		<tr ng-repeat="product in store.products" >
 			<td class="col-md-4">{{ product.name }}</td>
 			<td class="col-md-4">{{ product.price | currency }}</td>
-			<td class="col-md-4"></td>
+			<td ng-show="product.img" class="col-md-4 thumbnail">
+				<img ng-src="{{ product.img }}"/>
+			</td>
+			<td ng-hide="product.img">
+				<i>Image does not exist</i>
+			</td>
 		</tr>
 	</table>
 	

@@ -3,10 +3,10 @@
 	var store = angular.module('Store', []); // This will be our Angular base
 	// static
 	productsList = [
-					{ name: "Nexus 4", price: 300},
+					{ name: "Nexus 4", price: 300, img: "product-img/n4.jpg"},
 					{ name: "Nexus 5", price: 350},	
 					{ name: "Nexus 6", price: 640},	
-					{ name: "Plus one", price: 350},
+					{ name: "Plus one", price: 350, img: "product-img/oneplus.jpg"},
 					{ name: "Xperia Z3", price: 550},
 				];
 					
