@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html ng-app="Store">
+  <head>
+    <link rel="stylesheet" type="text/css" href="bootstrap.min.css" />
+    <script type="text/javascript" src="angular.min.js"></script>
+    <script type="text/javascript" src="app.js"></script>
+	
+  </head>
+
+  <body ng-controller="storeController as store">
+    <!--  Store Header  -->
+	<h1>Welcome to our shop!</h1>
+	<table class="table" >
+		<tr ng-repeat="product in store.products" >
+			<td class="col-md-4">{{ product.name }}</td>
+			<td class="col-md-4">{{ product.price | currency }}</td>
+			<td class="col-md-4"></td>
+		</tr>
+	</table>
+	
+  </body>
+</html>
