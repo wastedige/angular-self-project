@@ -4,16 +4,24 @@
 	// static
 	productsList = [
 					{ name: "Nexus 4", price: 300, img: "product-img/n4.jpg"},
-					{ name: "Nexus 5", price: 350, review: "Too big. Yes I'm a girl. Ha Ha."},	
+					{ name: "Nexus 5", price: 350, reviews: ["Too big. Yes I'm a girl. Ha Ha."] },	
 					{ name: "Nexus 6", price: 640},	
 					{ name: "Plus one", price: 350, img: "product-img/oneplus.jpg"},
-					{ name: "Xperia Z3", price: 550, review: "Nice and classy."},
+					{ name: "Xperia Z3", price: 550, reviews: ["Nice and classy."] },
 				];
 					
 		
 	store.controller('storeController', function() {
 		this.products = productsList;
 	});	
+	
+	store.controller('reviewController', function() {
+		this.newReview = ""; // will use ng-model to bind this to the textarea window
+		this.addReview = function(product){		
+			product.reviews.push(this.newReview);
+			this.newReview = ""; // makes review input area blank again
+		};
+	});
 	
 	store.controller('itemSelector', function() {
 		this.activeItem = 1;

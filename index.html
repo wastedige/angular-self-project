@@ -30,18 +30,21 @@
 
 		</table>
 		
-		<table>
-			<tr>
-				<b>Review:</b>
-			</tr><tr>
-				{{ store.products[item.itemIndex()].review }}
-			</tr><tr>							
-				Write your own review:<br>
-				<textarea ng-model="store.products[item.itemIndex()].review"></textarea>
-		</tr>
+		<form name="reviewForm" ng-controller="reviewController as revCtrl" ng-submit="revCtrl.addReview( store.products[item.itemIndex()] )" >
+			<b>Reviews:</b>			
+			<div ng-repeat="review in store.products[item.itemIndex()].reviews" >
+					{{ review }}
+					<br>------------
+			</div>		
+			<fieldset>			
+				<textarea ng-model="revCtrl.newReview" placeholder="Write a short review of the product..." title="Review"></textarea>
+			</fieldset>					
+			<fieldset>				
+				<input type="submit" value="Submit Review" />
+			</fieldset>			
+		</form>
 	</div>
-
-
+	
 
   </body>
 </html>
