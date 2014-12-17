@@ -4,10 +4,10 @@
 	// static
 	productsList = [
 					{ name: "Nexus 4", price: 300, img: "product-img/n4.jpg"},
-					{ name: "Nexus 5", price: 350},	
+					{ name: "Nexus 5", price: 350, review: "Too big. Yes I'm a girl. Ha Ha."},	
 					{ name: "Nexus 6", price: 640},	
 					{ name: "Plus one", price: 350, img: "product-img/oneplus.jpg"},
-					{ name: "Xperia Z3", price: 550},
+					{ name: "Xperia Z3", price: 550, review: "Nice and classy."},
 				];
 					
 		
@@ -22,6 +22,9 @@
 		};
 		this.isSet = function(item) {
 			return (item === this.activeItem);
+		};
+		this.itemIndex = function(item) {
+			return (this.activeItem);
 		};
 	});
 })();
