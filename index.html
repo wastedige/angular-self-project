@@ -11,7 +11,7 @@
     <!--  Store Header  -->
 	<h1>Welcome to our shop!</h1>
 	<table ng-controller="itemSelector as item" class="table" >
-		<tr ng-class="{info: item.isSet($index)}" ng-repeat="product in store.products" >
+		<tr ng-class="{info: item.isSet($index)}" ng-repeat="product in store.products" ng-click="item.setItem($index)">
 			<td class="col-md-4">{{ product.name }}</td>
 			<td class="col-md-4">{{ product.price | currency }}</td>
 			<td ng-show="product.img" class="col-md-4 thumbnail">
