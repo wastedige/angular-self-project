@@ -10,8 +10,8 @@
   <body ng-controller="storeController as store">
     <!--  Store Header  -->
 	<h1>Welcome to our shop!</h1>
-	<table class="table" >
-		<tr ng-repeat="product in store.products" >
+	<table ng-controller="itemSelector as item" class="table" >
+		<tr ng-class="{info: item.isSet($index)}" ng-repeat="product in store.products" >
 			<td class="col-md-4">{{ product.name }}</td>
 			<td class="col-md-4">{{ product.price | currency }}</td>
 			<td ng-show="product.img" class="col-md-4 thumbnail">
@@ -22,6 +22,6 @@
 			</td>
 		</tr>
 	</table>
-	
+
   </body>
 </html>

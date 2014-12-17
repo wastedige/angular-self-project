@@ -14,5 +14,15 @@
 	store.controller('storeController', function() {
 		this.products = productsList;
 	});	
+	
+	store.controller('itemSelector', function() {
+		this.activeItem = 1;
+		this.setItem = function(item) {
+			this.activeItem = item;
+		};
+		this.isSet = function(item) {
+			return (item === this.activeItem);
+		};
+	});
 })();
 	
