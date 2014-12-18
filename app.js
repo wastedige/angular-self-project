@@ -18,7 +18,8 @@
 	store.controller('reviewController', function() {
 		this.newReview = ""; // will use ng-model to bind this to the textarea window
 		this.addReview = function(product){		
-			product.reviews.push(this.newReview);
+			if (this.newReview.trim() !== "") 
+				product.reviews.push(this.newReview);
 			this.newReview = ""; // makes review input area blank again
 		};
 	});
