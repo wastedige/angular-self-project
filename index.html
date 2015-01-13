@@ -45,15 +45,26 @@
 
 		</table>
 		
-		<form id="reviewForm" name="reviewForm" ng-controller="reviewController as revCtrl" ng-submit="revCtrl.addReview( store.products[item.itemIndex()] )" >
+		<!-- Binding to form and control state https://docs.angularjs.org/guide/forms -->
+		<form name="reviewForm" ng-controller="reviewController as revCtrl" ng-submit="revCtrl.addReview( store.products[item.itemIndex()] )" novalidate >
 			<h3>Reviews:</h3>			
 			<div ng-repeat="review in store.products[item.itemIndex()].reviews" >
-					{{ review }}
-					<br>------------
+					<p>
+					<b>{{ review.name }}</b>
+					{{ review.content }}
+					</p>
 			</div>		
-			<fieldset>			
-				<textarea ng-model="revCtrl.newReview" placeholder="Write a short review of the product..." title="Review"></textarea>
-			</fieldset>					
+			<input type="text" ng-model="revCtrl.newReview.name" placeholder="Name" id="name" name="name" required=""></input>
+			<br/>
+			
+			<textarea ng-model="revCtrl.newReview.content" placeholder="Your review..." id="content" name="content" required=""></textarea>
+			<div ng-show="reviewForm.$submitted || reviewForm.name.$touched">
+				<span ng-show="reviewForm.name.$error.required">Your name please X(</span>
+			</div>	
+			<div ng-show="reviewForm.$submitted || reviewForm.content.$touched">
+				<span ng-show="reviewForm.content.$error.required">Your review please X(</span>
+			</div>				
+
 			<fieldset>				
 				<input type="submit" value="Submit Review" />
 			</fieldset>			

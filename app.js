@@ -5,11 +5,11 @@
 	store.factory('reviewSrv', function() {
 		// static
 		productsList = [
-				{ name: "Nexus 4", price: 300, img: "product-img/n4.jpg"},
-				{ name: "Nexus 5", price: 350, reviews: ["Too big. Yes I'm a girl. Ha Ha."] },	
-				{ name: "Nexus 6", price: 640},	
-				{ name: "Plus one", price: 350, img: "product-img/oneplus.jpg"},
-				{ name: "Xperia Z3", price: 550, reviews: ["Nice and classy."] },
+				{ name: "Nexus 4", price: 300, reviews: [], img: "product-img/n4.jpg"},
+				{ name: "Nexus 5", price: 350, reviews: [{name: "Jane", content:"Too big. Yes I'm a girl. Ha Ha."}] },	
+				{ name: "Nexus 6", price: 640, reviews: []},	
+				{ name: "Plus one", price: 350, reviews: [], img: "product-img/oneplus.jpg"},
+				{ name: "Xperia Z3", price: 550, reviews: [{name: "Dan", content: "Nice and classy."}] },
 			];
 			
 		return {
@@ -24,11 +24,11 @@
 	}]);	
 	
 	store.controller('reviewController', function() {
-		this.newReview = ""; // will use ng-model to bind this to the textarea window
+		this.newReview = []; // will use ng-model to bind this to the textarea window
 		this.addReview = function(product){		
-			if (this.newReview.trim() !== "") 
+			if (this.newReview.name.trim() !== "" && this.newReview.content.trim() !== "") 
 				product.reviews.push(this.newReview);
-			this.newReview = ""; // makes review input area blank again
+			this.newReview = []; // makes review input area blank again
 		};
 	});
 	
