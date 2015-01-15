@@ -1,6 +1,27 @@
+// Using NPM to create a local web server https://www.npmjs.com/package/local-web-server
+
 // wrapping the whole thing with a function is a good practice
 (function(){
-	var store = angular.module('Store', []); // This will be our Angular base
+	// This will be our Angular base
+	var store = angular.module('Store', ['ngRoute']); // ngRoute module enables routing
+	
+	store.config(['$routeProvider',
+	  function($routeProvider) {
+		$routeProvider.
+		  when('/', {
+			templateUrl: 'main.html',
+			controller: 'storeController',
+			controllerAs: 'store'			
+		  }).
+		  when('/:phoneId', {
+			templateUrl: 'phone-detail.html',
+			controller: 'storeController'
+		  }).
+		  otherwise({
+			redirectTo: 'main.html'
+		  });
+	}]);
+	
 	// service
 	store.factory('reviewSrv', function() {
 		// static
