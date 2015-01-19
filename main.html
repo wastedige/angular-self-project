@@ -1,17 +1,17 @@
    <!--  Store Header  -->
-	<center><h1>
-		Welcome to our shop!<br>
-		<small>
-			Where we sell the same overpriced crap as others, but at least we're honest!
-		</small>
-	</h1></center>
+
 	<div ng-controller="itemSelector as item">
 		<table  class="table" >
 			<!--  
 			info: item.isSet($index) is used to highlight the selected table row (applies the info class, from bootstrap)
 			-->
 			<tr ng-class="{info: item.isSet($index)}" ng-repeat="product in store.products" ng-click="item.setItem($index)">
-				<td class="col-md-4">{{ product.name }}</td>
+				
+				<td class="col-md-4">
+					<a ng-href="#/{{ $index }}">
+						{{ product.name }}					
+					</a>
+				</td>
 				<td class="col-md-4">{{ product.price | currency }}</td>
 				<td ng-show="product.img" class="col-md-4 thumbnail">
 					<img ng-src="{{ product.img }}"/>

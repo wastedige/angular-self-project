@@ -15,7 +15,7 @@
 		  }).
 		  when('/:phoneId', {
 			templateUrl: 'phone-detail.html',
-			controller: 'itemDetailController'
+			controller: 'storeController'
 		  }).
 		  otherwise({
 			redirectTo: 'main.html'
@@ -39,18 +39,9 @@
 						
 	});
 						
-	store.controller('itemDetailController', [
-		'$scope',
-		'$routeParams',
-		'reviewSrv',
-		function($scope, $routeParams, reviewSrv){
-			$scope.id = $routeParams.phoneId;
-	}]);
-
-	store.controller('storeController', [
-		'reviewSrv', 
-		function(reviewSrv) {
-			this.products = reviewSrv.productsList;
+		
+	store.controller('storeController', ['reviewSrv', function(reviewSrv) {
+		this.products = reviewSrv.productsList;
 	}]);	
 	
 	store.controller('reviewController', function() {
